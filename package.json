@@ -1,13 +1,18 @@
 {
   "name": "template-astro",
+  "author": "Unidad de desarrollo - Division TI",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": "20.10.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "ts-standard"
   },
   "dependencies": {
     "@astrojs/check": "0.5.10",
@@ -32,6 +37,14 @@
     "vue": "3.4.21"
   },
   "devDependencies": {
-    "drizzle-kit": "0.20.14"
+    "drizzle-kit": "0.20.14",
+    "ts-standard": "^12.0.2"
+  },
+  "eslintConfig": {
+    "extends": ["./node_modules/ts-standard/eslintrc.json"
+    ],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    }
   }
 }
