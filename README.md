@@ -16,6 +16,8 @@ pnpm install
   - [x] Tailwind - Framework CSS
   - [x] Shadcn - Componentes Tailwind
 
+  - [x] Standard 
+
 ### Instalacion Shadcn-vue
 
 npx shadcn-vue@latest init
@@ -50,20 +52,26 @@ Fuentes instaladas:
 
 ```text
 /
+├── .vscode/
+│   └── extensions.json
+│   └── launch.json
+│   └── settings.json
 ├── public/
 │   └── images/
 │       └── imagen.png
 │   └── favico.ico
 ├── src/
 │   └── components/
-│   └── layouts/
 │   └── db/
+│   └── layouts/
+│   └── lib/
 │   └── pages/
 │       └── index.astro
 │   └── styles/
 └── .env-example
 └── astro.config.mjs
 └── components.json
+└── package.json
 └── tailwind.config.mjs
 └── tsconfig.json
 ```
