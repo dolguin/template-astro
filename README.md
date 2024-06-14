@@ -29,9 +29,41 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory.
 
-## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+# Template Astro: starter kit 🫰
+
+## TECNOLOGIAS
+  - [x] pnpm - instalador de paquetes
+  - [ ] NodeJS - Server JS
+  - [x] Astro - Frontend
+  - [ ] Typescript - Lenguaje
+  - [ ] VueJs - Componentes
+
+  - [ ] Drizzle ORM - Base de datos
+
+  - [x] Tailwind - Framework CSS
+  - [ ] Shadcn - Componentes Tailwind
+
+### Instalacion Shadcn-vue
+
+npx shadcn-vue@latest init
+
+## Fonts & Icons
+
+Fuentes instaladas: 
+
+  - inter
+  - montserrat
+  - nunito
+  - red-hat-display
+
+  Se obtienen de la pag. [Fontsource](https://fontsource.org/ )
+
+Íconos:
+  - Lucide - Set de iconos [text](https://lucide.dev/)
+
+
+# Comandos
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
@@ -42,6 +74,25 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+# Estructura del Proyecto
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```text
+/
+├── public/
+│   └── images/
+│       └── imagen.png
+│   └── favico.ico
+├── src/
+│   └── components/
+│   └── layouts/
+│   └── db/
+│   └── pages/
+│       └── index.astro
+│   └── styles/
+└── .env-example
+└── astro.config.mjs
+└── components.json
+└── tailwind.config.mjs
+└── tsconfig.json
+```
+
