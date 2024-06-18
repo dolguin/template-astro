@@ -1,11 +1,12 @@
 ---
-import { Image } from "astro:assets";
-import { Button } from "@/components/ui/button";
-import { LockKeyhole } from "lucide-vue-next";
+import { NOMBRE_SITIO } from "@/constants"
+import { Image } from "astro:assets"
+import { Button } from "@/components/ui/button"
+import { LockKeyhole } from "lucide-vue-next"
 
-import Logo from "../../../public/images/logo_nav.png";
+import Logo from "../../../public/images/logo_nav.png"
 
-const Title = import.meta.env.PUBLIC_NOMBRE_SITIO + " - Servicio Electoral de Chile";
+const Title = NOMBRE_SITIO
 ---
 
 <nav class="pt-4 container">

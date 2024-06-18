@@ -1,8 +1,8 @@
 ---
+import { APP_VERSION } from '@/constants'
 import ThemeIcon from "@/components/ThemeIcon.astro"
 import "@fontsource-variable/red-hat-display"
 
-const VERSION_APP = import.meta.env.PUBLIC_VERSION_APP
 ---
 <footer class="container sticky top-[100vh]">
   <div class="flex flex-wrap items-center px-4 py-8 mx-auto justify-between text-sm border-t-[1px] border-solid align-middle">
@@ -12,7 +12,7 @@ const VERSION_APP = import.meta.env.PUBLIC_VERSION_APP
         <li>|</li>
         <li>Divisón de TI.</li>
         <li>|</li>
-        <li>{VERSION_APP}</li>
+        <li>{APP_VERSION}</li>
       </ul>
     </div>
     <div class="flex justify-center space-x-4 mt-4 lg:mt-0">
