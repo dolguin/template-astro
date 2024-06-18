@@ -6,4 +6,7 @@ export default defineConfig({
   integrations: [tailwind({
     applyBaseStyles: false
   }), vue()]
+  // server: {
+  //   port: 3003
+  // }
 })
