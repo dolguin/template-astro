@@ -1,7 +1,24 @@
 # Template Astro: starter kit 🫰
 
+## PRIMEROS PASOS
+
+  Instalación de modulos
+
+  ```text
+    pnpm install
+  ```
+
+## CONFIGURACIÓN PUERTO
+
+En archivo astro.config.mjs agregar/descomentar 
+
 ```text
-pnpm install
+  export default defineConfig({
+    ...
+    server: {
+      port: 3003
+    }
+  })
 ```
 
 ## TECNOLOGIAS
@@ -68,6 +85,7 @@ Fuentes instaladas:
 │   └── pages/
 │       └── index.astro
 │   └── styles/
+│   └── constants.ts
 └── .env-example
 └── astro.config.mjs
 └── components.json
@@ -76,3 +94,7 @@ Fuentes instaladas:
 └── tsconfig.json
 ```
 
+- /.vscode : Configuración de VS Code.
+- /public
+- /src
+- /src/constants.ts : Captura las variables de entorno, para usarlas dentro del proyecto
