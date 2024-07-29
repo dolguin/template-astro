@@ -5,8 +5,8 @@ import vue from '@astrojs/vue'
 export default defineConfig({
   integrations: [tailwind({
     applyBaseStyles: false
-  }), vue()]
-  // server: {
-  //   port: 3003
-  // }
+  }), vue()],
+  server: {
+    port: 3000
+  }
 })
