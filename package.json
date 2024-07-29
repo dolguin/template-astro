@@ -23,6 +23,7 @@
     "@fontsource-variable/nunito": "5.0.19",
     "@fontsource-variable/red-hat-display": "5.0.21",
     "@radix-icons/vue": "1.0.0",
+    "@types/node": "22.0.0",
     "astro": "4.12.2",
     "class-variance-authority": "0.7.0",
     "clsx": "2.1.1",
