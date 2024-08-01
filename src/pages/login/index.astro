@@ -1,0 +1,30 @@
+---
+import Layout from "@/layouts/Layouts.astro"
+import Header from "@/components/landing/Header.astro"
+import Footer from "@/components/landing/Footer.astro"
+
+import "@fontsource-variable/red-hat-display"
+
+const title = import.meta.env.PUBLIC_NOMBRE_SITIO + " - Servicio Electoral de Chile"
+const description = import.meta.env.PUBLIC_DESCRIPCION_SITIO;
+
+const { user } = Astro.locals
+---
+
+<Layout title= {title} description= {description}>
+  <Header />
+  <main class="p-10 container">
+		<div class="border-b border-solid p-3 uppercase mb-3">login</div>
+    {user ? 
+      <div>
+        <div>{JSON.stringify(user)}</div>
+        <form method="post" action="/api/logout">
+          <button>Sign out</button>
+        </form>
+      </div>
+      : 
+      <a href="/login/github">Sign in with Github</a>
+    }
+  </main>
+  <Footer />
+</Layout>

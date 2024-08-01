@@ -18,6 +18,11 @@ pnpm install
 
   - [x] Standard 
 
+### AUTENTIFICACION
+  - [x]  lucia auth
+    - [x]  GitHub
+    - [ ]  Cognito
+
 ### Instalacion Shadcn-vue
 
 npx shadcn-vue@latest init
@@ -75,4 +80,35 @@ Fuentes instaladas:
 └── tailwind.config.mjs
 └── tsconfig.json
 ```
+# CONFIGURACIONES BÁSICAS [astro.config.mjs]
+## CAMBIAR PUERTO POR DEFECTO
+En el archivo astro.config.mjs agregar la siguiente 
+```
+export default defineConfig({
+  ...
+  server: {
+    port: 3003
+  }
+})
+```
+## CAMBIAR PUERTO POR DEFECTO
+En el archivo astro.config.mjs agregar la siguiente 
+```
+export default defineConfig({
+  ...
+  server: {
+    open: '/login'
+  }
+})
+```
 
+# DBASE
+## GENERACION SCRIPT DBASE
+```
+  pnpm drizzle-kit generate
+```  
+
+## PUBLICACION DBASE
+```
+  pnpm drizzle-kit push
+```
