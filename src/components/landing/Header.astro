@@ -1,11 +1,12 @@
 ---
-import { Image } from "astro:assets";
-import { Button } from "@/components/ui/button";
-import { LockKeyhole } from "lucide-vue-next";
+import { Image } from "astro:assets"
+import { Button } from "@/components/ui/button"
+import { LogIn, LogOut } from "lucide-vue-next"
 
-import Logo from "../../../public/images/logo_nav.png";
+import Logo from "@public/images/logo_nav.png"
+const { user } = Astro.locals
 
-const Title = import.meta.env.PUBLIC_NOMBRE_SITIO + " - Servicio Electoral de Chile";
+const Title = import.meta.env.PUBLIC_NOMBRE_SITIO + " - Servicio Electoral de Chile"
 ---
 
 <nav class="pt-4 container">
@@ -16,11 +17,20 @@ const Title = import.meta.env.PUBLIC_NOMBRE_SITIO + " - Servicio Electoral de Ch
       </a>
       <span class="text-xl font-bold">{Title}</span>
     </div>
-    <div class="flex items-end">
-      <Button variant="ghost">
-        <LockKeyhole class="pr-2" />
-        <p class="uppercase">acceso</p>
-      </Button>
+    <div class="flex items-center">
+      {user ? 
+        <form method="post" action="/api/logout">
+          <Button variant="secondary">
+            <LogOut class="pr-2" />Sign out
+          </Button>
+        </form>
+      :
+        <a href="/login" class="text-sm">
+          <Button variant="secondary" class="mt-4 w-full">
+            <LogIn class="pr-2" />Acceso
+          </Button>
+        </a>
+      }
     </div>
   </div>
 </nav>

@@ -45,11 +45,6 @@ export async function GET (context: APIContext): Promise<Response> {
 
     if (existingUser != null) {
       const session = await lucia.createSession(existingUser.user_id, {})
-      await db.update(userTable)
-        .set({
-          lastAccess: new Date()
-        })
-        .where(eq(userTable.id, existingUser.user_id))
       // const sessionCookie = lucia.createSessionCookie(session.id)
       const sessionCookie = lucia.createSessionCookie(session.userId)
       context.cookies.set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes)

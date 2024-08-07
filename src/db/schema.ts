@@ -7,11 +7,7 @@ export const userTable = pgTable('usuario', {
   createdAt: timestamp('created_at', {
     withTimezone: true,
     mode: 'date'
-  }).notNull().defaultNow(),
-  lastAccess: timestamp('last_access', {
-    withTimezone: true,
-    mode: 'date'
-  }).defaultNow()
+  }).notNull().defaultNow()
 })
 
 export const sessionTable = pgTable('session', {
