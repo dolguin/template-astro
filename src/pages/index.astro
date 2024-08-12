@@ -5,12 +5,21 @@ import Footer from "@/components/landing/Footer.astro"
 
 const title = import.meta.env.PUBLIC_NOMBRE_SITIO + " - Servicio Electoral de Chile"
 const description = import.meta.env.PUBLIC_DESCRIPCION_SITIO;
+
+const { user } = Astro.locals
+
+if (user != null) Astro.redirect('/admin')
 ---
 
 <Layout title= {title} description= {description}>
   <Header />
   <main class="p-10 container">
-		<div>Pagina de inicio</div>
+    {user != null ?
+      <h1>Bienvenido, {JSON.stringify(user.username).replaceAll('"', '')}</h1>
+    :
+    <h1>PAGINA DE INICIO</h1>
+    }
+		
   </main>
   <Footer />
 </Layout>
