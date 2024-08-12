@@ -4,7 +4,7 @@ import Header from "@/components/layout/header/headir_sin_access.astro"
 import Footer from "@/components/landing/Footer.astro"
 
 import { Button } from "@/components/ui/button"
-import { Github, KeyRound } from "lucide-vue-next"
+import { Github, KeyRound, LogOutIcon } from "lucide-vue-next"
 
 import "@fontsource-variable/red-hat-display"
 import { redirectToDefaultLocale } from "astro:i18n"
@@ -14,42 +14,57 @@ const description = import.meta.env.PUBLIC_DESCRIPCION_SITIO;
 
 const { user } = Astro.locals
 
-if (user) {
-  return Astro.redirect('/admin')
-}
 ---
 
 <Layout title= {title} description= {description}>
   <Header />
-  <div class="mx-auto flex min-h-[80dvh] items-center justify-center py-24">
-    <div class="mx-auto max-w-md space-y-6">
-      <div class="space-y-2 text-center">
-        <h1 class="text-3xl font-bold">Inicio de Sesión</h1>
-        <p class="text-gray-400">Ingresa tus credenciales para acceder a tu cuenta.</p>
-      </div>
-      <div class="space-y-4">
-        <a href="/login/github" class="text-sm">
-          <Button variant="secondary" class="mt-4 w-full">
-            <Github class="mr-2 h-5 w-5" />Ingresa con Github
-          </Button>
-        </a>
-        <a href="/login/github" class="text-sm">
-          <Button variant="secondary" class="mt-4 w-full">
-            <KeyRound class="mr-2 h-5 w-5" />Ingresa con ID Servel
-          </Button>
-        </a>
-      </div>
-      <div class="relative">
-        <div class="absolute inset-0 flex items-center">
-          <span class="w-full border-t" />
+  {user == null ?
+    <div class="mx-auto flex min-h-[80dvh] items-center justify-center py-24">
+      <div class="mx-auto max-w-md space-y-6">
+        <div class="space-y-2 text-center">
+          <h1 class="text-3xl font-bold">Inicio de Sesión</h1>
+          <p class="text-gray-400">Ingresa tus credenciales para acceder a tu cuenta.</p>
         </div>
-        <div class="relative flex justify-center text-xs uppercase">
-          <span class="bg-background px-2 text-muted-foreground">
-            O
-          </span>
+        <div class="space-y-4">
+          <a href="/login/github" class="text-sm">
+            <Button variant="secondary" class="mt-4 w-full">
+              <Github class="mr-2 h-5 w-5" />Ingresa con Github
+            </Button>
+          </a>
+          <a href="/login/github" class="text-sm">
+            <Button variant="secondary" class="mt-4 w-full">
+              <KeyRound class="mr-2 h-5 w-5" />Ingresa con ID Servel
+            </Button>
+          </a>
+        </div>
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center">
+            <span class="w-full border-t" />
+          </div>
+          <div class="relative flex justify-center text-xs uppercase">
+            <span class="bg-background px-2 text-muted-foreground">
+              O
+            </span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  :
+    <div class="mx-auto flex min-h-[80dvh] items-center justify-center py-24">
+      <div class="mx-auto max-w-md space-y-6">
+        <div class="space-y-2 text-center">
+          <h1 class="text-3xl font-bold">Cerrar Sesión</h1>
+          <p class="text-gray-400">Para salir de su cuenta, haga click en el botón.</p>
+        </div>
+        <div class="space-y-4">
+          <div>{JSON.stringify(user.username).replaceAll('"', '')}</div>
+          <form method="post" action="../api/logout">
+            <Button variant="secondary" class="mt-4 w-full">
+              <LogOutIcon class="mr-2 h-5 w-5" />Cerrar Sesión
+            </Button>
+          </form>
+        </div>
+      </div>
+    </div>  }
   <Footer />
 </Layout>

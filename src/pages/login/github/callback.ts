@@ -3,8 +3,8 @@ import { OAuth2RequestError } from 'arctic'
 import { generateIdFromEntropySize } from 'lucia'
 
 import { db } from '@/db'
-import { providerTable, sessionTable, userTable } from '@/db/schema'
-import { eq, and } from 'drizzle-orm'
+import { userTable } from '@/db/schema'
+import { eq } from 'drizzle-orm'
 
 import type { APIContext } from 'astro'
 
@@ -27,28 +27,15 @@ export async function GET (context: APIContext): Promise<Response> {
     })
     const githubUser: GitHubUser = await githubUserResponse.json()
 
-    // const existingUser = await db.query.userTable.findFirst({
-    //   where: eq(userTable.githubId, githubUser.id)
-    // })
-
-    const existingUser = await db
-      .query.providerTable.findFirst({
-        where: (
-          and(
-            eq(providerTable.provider_id, 'github'),
-            eq(providerTable.provider_user_id, githubUser.id)
-          )
-        )
-      })
-
-    console.log(existingUser)
+    const existingUser = await db.query.userTable.findFirst({
+      where: eq(userTable.githubId, githubUser.id)
+    })
 
     if (existingUser != null) {
-      const session = await lucia.createSession(existingUser.user_id, {})
-      // const sessionCookie = lucia.createSessionCookie(session.id)
-      const sessionCookie = lucia.createSessionCookie(session.userId)
+      const session = await lucia.createSession(existingUser.id, {})
+      const sessionCookie = lucia.createSessionCookie(session.id)
       context.cookies.set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes)
-      return context.redirect('/admin')
+      return context.redirect('/')
     }
 
     const userId = generateIdFromEntropySize(10)
@@ -59,16 +46,10 @@ export async function GET (context: APIContext): Promise<Response> {
       username: githubUser.login
     })
 
-    await db.insert(providerTable).values({
-      user_id: userId,
-      provider_id: 'github',
-      provider_user_id: githubUser.id
-    })
-
     const session = await lucia.createSession(userId, {})
     const sessionCookie = lucia.createSessionCookie(session.id)
     context.cookies.set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes)
-    return context.redirect('/admin')
+    return context.redirect('/')
   } catch (e) {
     // the specific error message depends on the provider
     if (e instanceof OAuth2RequestError) {

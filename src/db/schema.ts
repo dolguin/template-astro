@@ -1,13 +1,10 @@
+// import { github } from '@/lib/auth'
 import { pgTable, text, timestamp } from 'drizzle-orm/pg-core'
 
 export const userTable = pgTable('usuario', {
   id: text('id').primaryKey(),
   githubId: text('github_id').unique().notNull(),
-  username: text('username').notNull(),
-  createdAt: timestamp('created_at', {
-    withTimezone: true,
-    mode: 'date'
-  }).notNull().defaultNow()
+  username: text('username').notNull()
 })
 
 export const sessionTable = pgTable('session', {
@@ -19,10 +16,4 @@ export const sessionTable = pgTable('session', {
     withTimezone: true,
     mode: 'date'
   }).notNull()
-})
-
-export const providerTable = pgTable('provider', {
-  provider_id: text('provider_id').notNull().primaryKey(),
-  provider_user_id: text('provider_user_id').notNull(),
-  user_id: text('user_id').notNull().references(() => userTable.id)
 })

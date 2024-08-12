@@ -19,17 +19,17 @@ const Title = import.meta.env.PUBLIC_NOMBRE_SITIO + " - Servicio Electoral de Ch
     </div>
     <div class="flex items-center">
       {user ? 
-        <form method="post" action="/api/logout">
-          <Button variant="secondary">
-            <LogOut class="pr-2" />Sign out
-          </Button>
-        </form>
-      :
         <a href="/login" class="text-sm">
-          <Button variant="secondary" class="mt-4 w-full">
-            <LogIn class="pr-2" />Acceso
-          </Button>
-        </a>
+        <Button variant="secondary" class="mt-4 w-full">
+          <LogOut class="pr-2" />Salir
+        </Button>
+      </a>
+      :
+      <a href="/login" class="text-sm">
+        <Button variant="secondary" class="mt-4 w-full">
+          <LogIn class="pr-2" />Acceso
+        </Button>
+      </a>
       }
     </div>
   </div>
