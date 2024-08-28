@@ -21,7 +21,7 @@ pnpm install
 ### AUTENTIFICACION
   - [x]  lucia auth
     - [x]  GitHub
-    - [ ]  Cognito
+  - [ ]  Amplify
 
 ### Instalacion Shadcn-vue
 
